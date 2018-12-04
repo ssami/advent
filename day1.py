@@ -12,7 +12,6 @@ def first_seen_dupe(input):
     while True:
         curr = input[index]
         sum += curr # add freq to set
-        print(sum)
         if sum in nums:
             return sum
         nums.add(sum)
@@ -23,7 +22,7 @@ def first_seen_dupe(input):
 
 
 if __name__ == "__main__":
-    with open('/Users/ssami/Documents/Personal/advent1_input.txt') as f:
+    with open('day1_input.txt') as f:
         lines = f.readlines()
     stripped_lines = [int(x.strip()) for x in lines]
     print(stripped_lines)
