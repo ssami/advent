@@ -1,8 +1,10 @@
-import java.text.SimpleDateFormat
-import java.time.{Instant, LocalDate, LocalDateTime, ZoneId}
-import java.time.format.DateTimeFormatter
-import java.time.temporal.{ChronoField, TemporalAccessor}
-import java.util.Date
+
+val count = collection.mutable.Map[Int, Int]()
+val oldnum = count.getOrElse(5, 0)
+if (!count.contains(5)) count(5) = 20
+val num = count.get(5)
+val newnum = num.getOrElse(1)
+
 
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Sorting
@@ -87,3 +89,4 @@ checkOppose('A', 'A')
 checkOppose('A', 'a')
 checkOppose('y', 'a')
 checkOppose('Y', 'a')
+
