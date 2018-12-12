@@ -1,9 +1,31 @@
+//
+//val count = collection.mutable.Map[Int, Int]()
+//val oldnum = count.getOrElse(5, 0)
+//if (!count.contains(5)) count(5) = 20
+//val num = count.get(5)
+//val newnum = num.getOrElse(1)
 
-val count = collection.mutable.Map[Int, Int]()
-val oldnum = count.getOrElse(5, 0)
-if (!count.contains(5)) count(5) = 20
-val num = count.get(5)
-val newnum = num.getOrElse(1)
+val pattern = """Step (\w) must be finished before step (\w) can begin.""".r
+val pattern(s1, s2) = "Step F must be finished before step E can begin."
+println(s1)
+println(s2)
+
+import scala.collection.mutable
+
+
+case class Step(name: String, dependencies: List[String]) extends Ordered[Step] {
+  override def compare(that: Step): Int = {
+    that.name compare this.name
+  }
+}
+
+val q = new mutable.PriorityQueue[Step]()
+q.enqueue(Step("X", null))
+q.enqueue(Step("A", null))
+q.enqueue(Step("Y", null))
+q.enqueue(Step("C", null))
+println(q)
+
 
 
 import scala.collection.mutable.ArrayBuffer
