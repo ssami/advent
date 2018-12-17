@@ -1,3 +1,6 @@
+
+
+
 //
 //val count = collection.mutable.Map[Int, Int]()
 //val oldnum = count.getOrElse(5, 0)
@@ -5,31 +8,37 @@
 //val num = count.get(5)
 //val newnum = num.getOrElse(1)
 
-val pattern = """Step (\w) must be finished before step (\w) can begin.""".r
-val pattern(s1, s2) = "Step F must be finished before step E can begin."
-println(s1)
-println(s2)
+val test = 15/2+1 // rounds down 15/2
 
-import scala.collection.mutable
+val pattern = """position=<([-|\s]\d+), ([-|\s]\d+)> velocity=<\s?(-?\d), \s?(-?\d)>""".r
+val line = "position=<-41483,  20993> velocity=< 4, -2>"
+val pattern(x,y,v1,v2) = line
 
+val pv = PointVelocity(x.trim().toInt, y.trim().toInt,
+  v1.trim().toInt, v2.trim().toInt)
 
-case class Step(name: String, dependencies: List[String]) extends Ordered[Step] {
-  override def compare(that: Step): Int = {
-    that.name compare this.name
-  }
-}
+case class PointVelocity(x: Int, y: Int, v1: Int, v2: Int)
+//val pattern = """Step (\w) must be finished before step (\w) can begin.""".r
+//val pattern(s1, s2) = "Step F must be finished before step E can begin."
+//println(s1)
+//println(s2)
+//
+//import scala.collection.mutable
+//
+//
+//case class Step(name: String, dependencies: List[String]) extends Ordered[Step] {
+//  override def compare(that: Step): Int = {
+//    that.name compare this.name
+//  }
+//}
+//
+//val q = new mutable.PriorityQueue[Step]()
+//q.enqueue(Step("X", null))
+//q.enqueue(Step("A", null))
+//q.enqueue(Step("Y", null))
+//q.enqueue(Step("C", null))
+//println(q)
 
-val q = new mutable.PriorityQueue[Step]()
-q.enqueue(Step("X", null))
-q.enqueue(Step("A", null))
-q.enqueue(Step("Y", null))
-q.enqueue(Step("C", null))
-println(q)
-
-
-
-import scala.collection.mutable.ArrayBuffer
-import scala.util.Sorting
 //import Day3.{overlapped, parseInput, square}
 //
 //import scala.io.Source
@@ -102,13 +111,13 @@ import scala.util.Sorting
 //arr.sortBy(_.t)
 //println(arr.mkString(" "))
 
-def checkOppose(x: Char, y: Char): Boolean = {
-  (x != y) && (x.toUpper == y || x.toLower == y)
-}
-
-checkOppose('a', 'A')
-checkOppose('A', 'A')
-checkOppose('A', 'a')
-checkOppose('y', 'a')
-checkOppose('Y', 'a')
+//def checkOppose(x: Char, y: Char): Boolean = {
+//  (x != y) && (x.toUpper == y || x.toLower == y)
+//}
+//
+//checkOppose('a', 'A')
+//checkOppose('A', 'A')
+//checkOppose('A', 'a')
+//checkOppose('y', 'a')
+//checkOppose('Y', 'a')
 
